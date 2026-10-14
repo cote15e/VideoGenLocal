@@ -240,7 +240,7 @@ function newView() {
       thumbs.append(img);
     }
   });
-  const music = el("input", { type: "file", accept: "audio/*" });
+  const music = el("input", { class: "file-hidden", type: "file", accept: "audio/mpeg,audio/wav,audio/mp4,audio/aac,audio/ogg,audio/flac,.mp3,.wav,.m4a,.aac,.ogg,.flac" });
   const musicName = el("p", { class: "hint", text: "Необязательно. Если файла нет, ролик будет только с голосом." });
   music.addEventListener("change", () => {
     musicName.textContent = music.files[0] ? music.files[0].name : "Необязательно. Если файла нет, ролик будет только с голосом.";
@@ -259,7 +259,7 @@ function newView() {
     ]),
     el("div", { class: "drop" }, [
       el("strong", { text: "Фоновая музыка" }),
-      music,
+      el("label", { class: "button ghost", text: "Выбрать файл" }, [music]),
       musicName,
     ]),
     errorBox,
